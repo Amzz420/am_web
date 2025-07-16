@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adham Adnan - Portfolio</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="light-theme">
+    <header>
+        <h1>Adham Adnan</h1>
+        <div class="theme-switcher">
+            <button class="btn">Dark</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Tab Navigation -->
+        <nav class="tab-navigation">
+            <button class="tablinks"
+                onclick="openSection(event, 'About')"
+                ondblclick="window.location.href='about.html'"
+                title="Double-click to view full About page">
+            About
+            </button>
+            <button class="tablinks" onclick="openSection(event, 'Works')">
+                Works & Publications
+            </button>
+            <button class="tablinks" onclick="openSection(event, 'Weekly')">
+                Weekly Column
+            </button>
+            <button class="tablinks" onclick="openSection(event, 'Contact')">
+                Contact
+            </button>
+        </nav>
+
+        <!-- Tab Content -->
+        <div class="tab-container">
+            <div id="About" class="tabcontent active">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="profile-section">
+                        <div class="profile-text">
+                            <p class="intro">Welcome to my professional portfolio. I'm passionate about creating meaningful work that makes a difference.</p>
+                            
+                            <h3>Background</h3>
+                            <p>With a strong foundation in [Your Field], I bring expertise in [Key Skills/Areas]. My approach combines analytical thinking with creative problem-solving to deliver impactful results.</p>
+                            
+                            <h3>Expertise</h3>
+                            <div class="skills-grid">
+                                <span class="skill-tag">Research & Analysis</span>
+                                <span class="skill-tag">Project Management</span>
+                                <span class="skill-tag">Strategic Planning</span>
+                                <span class="skill-tag">Data Analysis</span>
+                                <span class="skill-tag">Technical Writing</span>
+                                <span class="skill-tag">Problem Solving</span>
+                            </div>
+                            
+                            <h3>Philosophy</h3>
+                            <p>I believe in continuous learning, collaborative innovation, and the power of well-executed ideas to create positive change.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Works" class="tabcontent">
+                <h2>Works & Publications</h2>
+                <div class="work-item">
+                     <h4>My Project Paper</h4>
+                     <p class="work-date">2025</p>
+                    <p>A deep-dive research project analyzing [topic]. Click below to read full details and access the paper.</p>
+                    <div class="work-tags">
+                        <span class="tag">Research</span>
+                        <span class="tag">Publication</span>
+                    </div>
+                    <a href="POL3173-paper.html" class="btn-view">🔍 View Project</a>
+                </div>
+                <div class="works-content">
+                    <div class="work-categories">
+                        <div class="category-section">
+                            <h3>Recent Projects</h3>
+                            <div class="work-item">
+                                <h4>Project Title 1</h4>
+                                <p class="work-date">2024</p>
+                                <p>Brief description of your project, its objectives, methodology, and key outcomes. Highlight the impact and significance of the work.</p>
+                                <div class="work-tags">
+                                    <span class="tag">Research</span>
+                                    <span class="tag">Analysis</span>
+                                </div>
+                            </div>
+                            
+                            <div class="work-item">
+                                <h4>Project Title 2</h4>
+                                <p class="work-date">2024</p>
+                                <p>Another significant project showcasing your skills and expertise. Include measurable results where possible.</p>
+                                <div class="work-tags">
+                                    <span class="tag">Strategy</span>
+                                    <span class="tag">Implementation</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category-section">
+                            <h3>Publications</h3>
+                            <div class="work-item">
+                                <h4>Crisis as Method: Biopolitics, Legitimacy, and Authoritarian Neoliberalism in Hungary's Pandemic Governance</h4>
+                                <p class="work-date">Undergraduate Dissertation, May 2025</p>
+                                <p>Abstract or brief description of your publication, its contribution to the field, and key findings.</p>
+                                <div class="work-tags">
+                                    <span class="tag">Peer-Reviewed</span>
+                                    <span class="tag">Research</span>
+                                </div>
+                                <a href="diss.html" class="btn-view">🔍 View Project</a>
+                            </div>
+                            
+                            <div class="work-item">
+                                <h4>Publication Title 2</h4>
+                                <p class="work-date">Conference Proceedings, 2023</p>
+                                <p>Description of conference paper, presentation, or other academic contribution.</p>
+                                <div class="work-tags">
+                                    <span class="tag">Conference</span>
+                                    <span class="tag">Presentation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Weekly" class="tabcontent">
+                <h2>Weekly Column</h2>
+                <div class="weekly-content">
+                    <p class="column-intro">Stay updated with my latest thoughts, insights, and observations on industry trends, professional development, and emerging topics in [Your Field].</p>
+                    
+                    <div class="column-posts">
+                        <article class="post">
+                            <h3>Week of July 1, 2025: Reflections on Professional Growth</h3>
+                            <p class="post-date">Published: July 1, 2025</p>
+                            <p>This week's column explores the importance of continuous learning in today's rapidly evolving professional landscape. As we navigate new challenges and opportunities...</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </article>
+                        
+                        <article class="post">
+                            <h3>Week of June 24, 2025: Innovation in Practice</h3>
+                            <p class="post-date">Published: June 24, 2025</p>
+                            <p>Examining how theoretical concepts translate into practical applications, and the lessons learned from recent project implementations...</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </article>
+                        
+                        <article class="post">
+                            <h3>Week of June 17, 2025: Industry Trends Analysis</h3>
+                            <p class="post-date">Published: June 17, 2025</p>
+                            <p>A deep dive into emerging trends shaping our industry, with insights on what professionals should focus on in the coming months...</p>
+                            <a href="#" class="read-more">Read More</a>
+                        </article>
+                    </div>
+                    
+                    <div class="subscribe-section">
+                        <h4>Subscribe to Weekly Updates</h4>
+                        <p>Get notified when new columns are published.</p>
+                        <div class="subscribe-form">
+                            <input type="email" placeholder="Enter your email" class="email-input">
+                            <button class="subscribe-btn">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Contact" class="tabcontent">
+                <h2>Contact</h2>
+                <div class="contact-content">
+                    <div class="contact-grid">
+                        <div class="contact-info">
+                            <h3>Get In Touch</h3>
+                            <p>I'm always interested in discussing new opportunities, collaborations, and meaningful projects. Feel free to reach out.</p>
+                            
+                            <div class="contact-methods">
+                                <div class="contact-item">
+                                    <span class="contact-icon">Email</span>
+                                    <div>
+                                        <h4>Email</h4>
+                                        <p>your.email@example.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <span class="contact-icon">LinkedIn</span>
+                                    <div>
+                                        <h4>LinkedIn</h4>
+                                        <p>linkedin.com/in/yourprofile</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <span class="contact-icon">Website</span>
+                                    <div>
+                                        <h4>Website</h4>
+                                        <p>www.yourwebsite.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <span class="contact-icon">Location</span>
+                                    <div>
+                                        <h4>Location</h4>
+                                        <p>Your City, Country</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <h3>Send a Message</h3>
+                            <form>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" id="subject" name="subject" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="submit-btn">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <noscript>You need to enable JavaScript to view the full site.</noscript>
+</body>
+</html>
+
