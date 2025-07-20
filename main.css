@@ -18,9 +18,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px; /* Adjust as needed */
-  border-bottom: 2px solid #ccc;
-  background-color: #f9f9f9;
+  height: 200px;
+  border-bottom: 2px solid var(--accent);
+  background-color: var(--highlight-bg);
+  color: var(--fontColor);
 }
 
 .site-title {
@@ -28,6 +29,7 @@
   font-weight: bold;
   text-align: center;
   margin: 0;
+  color: var(--fontColor);
 }
 
 body {
