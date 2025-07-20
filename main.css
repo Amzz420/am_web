@@ -40,6 +40,30 @@ body {
     transition: var(--transition);
 }
 
+/* Smooth Theme Transition */
+body,
+.main-header,
+.site-title,
+.tab-navigation,
+.tab-container,
+.tablinks,
+.tabcontent,
+.work-item,
+.post,
+.contact-item,
+.contact-form,
+.email-input,
+.subscribe-section,
+.skill-tag,
+.category-section,
+.submit-btn {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
 .light-theme {
     --bg: var(--green);
     --fontColor: var(--black);
