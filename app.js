@@ -119,3 +119,14 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(item);
     });
 });
+
+function switchTheme() {
+  document.body.classList.add('theme-fade');
+
+  setTimeout(() => {
+    document.body.classList.toggle('dark-theme');
+    document.body.classList.toggle('light-theme');
+    document.body.classList.remove('theme-fade');
+  }, 150);
+}
+
