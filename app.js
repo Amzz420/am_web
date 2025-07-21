@@ -130,3 +130,10 @@ function switchTheme() {
   }, 150);
 }
 
+// Typing Feature
+new Typed('.site-title', {
+  strings: ["Your Name", "Your Role"],
+  typeSpeed: 100,
+  loop: true
+});
+
