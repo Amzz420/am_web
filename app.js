@@ -215,3 +215,45 @@ searchToggle.addEventListener('click', () => {
 // Initialize on page load
 initWorkItems();
 populateSuggestions();
+
+// Mobile-friendly Tab System
+document.addEventListener("DOMContentLoaded", () => {
+    const tabLinks = document.querySelectorAll(".tablinks");
+    const tabContents = document.querySelectorAll(".tabcontent");
+
+    tabLinks.forEach(link => {
+        link.addEventListener("click", e => {
+            const targetId = link.getAttribute("onclick")
+                ?.match(/'([^']+)'/)[1]; // Extract ID from onclick
+            if (!targetId) return;
+
+            // Hide all tabs
+            tabContents.forEach(tab => tab.classList.remove("active"));
+
+            // Remove active state from buttons
+            tabLinks.forEach(btn => btn.classList.remove("active"));
+
+            // Show clicked tab
+            document.getElementById(targetId).classList.add("active");
+            link.classList.add("active");
+
+            // Smooth scroll to top on mobile
+            if (window.innerWidth <= 768) {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        });
+
+        // If link has ondblclick, replace it with long press on mobile
+        if (link.getAttribute("ondblclick")) {
+            let pressTimer;
+            link.addEventListener("touchstart", () => {
+                pressTimer = setTimeout(() => {
+                    const pageUrl = link.getAttribute("ondblclick")
+                        .match(/'([^']+)'/)[1];
+                    window.location.href = pageUrl;
+                }, 600); // long press = 0.6s
+            });
+            link.addEventListener("touchend", () => clearTimeout(pressTimer));
+        }
+    });
+});
