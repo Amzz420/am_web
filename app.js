@@ -149,35 +149,61 @@ function populateSuggestions() {
     });
 }
 
-function filterWorks(searchTerm) {
-    const works = document.querySelectorAll('#Works .work-item');
-    works.forEach(work => {
-        const title = work.querySelector('h4');
-        const description = work.querySelector('p');
-        const text = work.innerText.toLowerCase();
+const searchInput = document.getElementById('worksSearch');
+const searchToggle = document.getElementById('searchToggle');
+const suggestionsList = document.getElementById('worksSuggestions');
 
-        if (text.includes(searchTerm.toLowerCase())) {
-            work.style.display = '';
-            title.innerHTML = title.textContent;
-            description.innerHTML = description.textContent;
+// Store original titles & descriptions
+let workItems = [];
+
+function initWorkItems() {
+    const items = document.querySelectorAll('#Works .work-item');
+    workItems = Array.from(items).map(work => ({
+        element: work,
+        titleEl: work.querySelector('h4'),
+        descEl: work.querySelector('p'),
+        title: work.querySelector('h4')?.textContent || '',
+        desc: work.querySelector('p')?.textContent || ''
+    }));
+}
+
+function populateSuggestions() {
+    suggestionsList.innerHTML = '';
+    const uniqueTitles = new Set(workItems.map(w => w.title.trim()));
+    uniqueTitles.forEach(title => {
+        const option = document.createElement('option');
+        option.value = title;
+        suggestionsList.appendChild(option);
+    });
+}
+
+function filterWorks(term) {
+    const searchTerm = term.toLowerCase();
+    workItems.forEach(work => {
+        const textMatch = (work.title + ' ' + work.desc).toLowerCase();
+        if (textMatch.includes(searchTerm)) {
+            work.element.style.display = '';
+            // Reset text
+            work.titleEl.textContent = work.title;
+            work.descEl.textContent = work.desc;
+            // Highlight
             if (searchTerm) {
                 const regex = new RegExp(`(${searchTerm})`, 'gi');
-                title.innerHTML = title.textContent.replace(regex, '<mark>$1</mark>');
-                description.innerHTML = description.textContent.replace(regex, '<mark>$1</mark>');
+                work.titleEl.innerHTML = work.title.replace(regex, '<mark>$1</mark>');
+                work.descEl.innerHTML = work.desc.replace(regex, '<mark>$1</mark>');
             }
         } else {
-            work.style.display = 'none';
+            work.element.style.display = 'none';
         }
     });
 }
 
-// Toggle icon between search & clear
+// Toggle search/clear icon
 searchInput.addEventListener('input', () => {
     filterWorks(searchInput.value);
     searchToggle.textContent = searchInput.value ? '✖' : '🔍';
 });
 
-// When clicking icon
 searchToggle.addEventListener('click', () => {
     if (searchInput.value) {
         searchInput.value = '';
@@ -186,11 +212,6 @@ searchToggle.addEventListener('click', () => {
     }
 });
 
+// Initialize on page load
+initWorkItems();
 populateSuggestions();
-
-// Watch for content changes
-const worksContainer = document.querySelector('#Works');
-if (worksContainer) {
-    const observer = new MutationObserver(populateSuggestions);
-    observer.observe(worksContainer, { childList: true, subtree: true });
-}
