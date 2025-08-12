@@ -137,3 +137,13 @@ new Typed('.site-title', {
   loop: true
 });
 
+// Javascript Filtering Logic
+document.getElementById('worksSearch').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const works = document.querySelectorAll('#Works .work-item');
+
+    works.forEach(work => {
+        const text = work.innerText.toLowerCase();
+        work.style.display = text.includes(searchTerm) ? '' : 'none';
+    });
+});
