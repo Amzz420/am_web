@@ -129,21 +129,68 @@ function switchTheme() {
     document.body.classList.remove('theme-fade');
   }, 150);
 }
+const searchInput = document.getElementById('worksSearch');
+const searchToggle = document.getElementById('searchToggle');
+const suggestionsList = document.getElementById('worksSuggestions');
 
-// Typing Feature
-new Typed('.site-title', {
-  strings: ["Your Name", "Your Role"],
-  typeSpeed: 100,
-  loop: true
-});
+function populateSuggestions() {
+    suggestionsList.innerHTML = '';
+    const titles = document.querySelectorAll('#Works .work-item h4');
+    const uniqueTitles = new Set();
 
-// Javascript Filtering Logic
-document.getElementById('worksSearch').addEventListener('input', function() {
-    const searchTerm = this.value.toLowerCase();
-    const works = document.querySelectorAll('#Works .work-item');
-
-    works.forEach(work => {
-        const text = work.innerText.toLowerCase();
-        work.style.display = text.includes(searchTerm) ? '' : 'none';
+    titles.forEach(title => {
+        const text = title.textContent.trim();
+        if (!uniqueTitles.has(text)) {
+            uniqueTitles.add(text);
+            const option = document.createElement('option');
+            option.value = text;
+            suggestionsList.appendChild(option);
+        }
     });
+}
+
+function filterWorks(searchTerm) {
+    const works = document.querySelectorAll('#Works .work-item');
+    works.forEach(work => {
+        const title = work.querySelector('h4');
+        const description = work.querySelector('p');
+        const text = work.innerText.toLowerCase();
+
+        if (text.includes(searchTerm.toLowerCase())) {
+            work.style.display = '';
+            title.innerHTML = title.textContent;
+            description.innerHTML = description.textContent;
+            if (searchTerm) {
+                const regex = new RegExp(`(${searchTerm})`, 'gi');
+                title.innerHTML = title.textContent.replace(regex, '<mark>$1</mark>');
+                description.innerHTML = description.textContent.replace(regex, '<mark>$1</mark>');
+            }
+        } else {
+            work.style.display = 'none';
+        }
+    });
+}
+
+// Toggle icon between search & clear
+searchInput.addEventListener('input', () => {
+    filterWorks(searchInput.value);
+    searchToggle.textContent = searchInput.value ? '✖' : '🔍';
 });
+
+// When clicking icon
+searchToggle.addEventListener('click', () => {
+    if (searchInput.value) {
+        searchInput.value = '';
+        filterWorks('');
+        searchToggle.textContent = '🔍';
+    }
+});
+
+populateSuggestions();
+
+// Watch for content changes
+const worksContainer = document.querySelector('#Works');
+if (worksContainer) {
+    const observer = new MutationObserver(populateSuggestions);
+    observer.observe(worksContainer, { childList: true, subtree: true });
+}
