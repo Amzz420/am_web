@@ -65,9 +65,16 @@
 
             <div id="Works" class="tabcontent">
                 <h2>Works & Publications</h2>
-              <div class="topnav"> 
-                <input type="text" placeholder="Search..">
-              </div>
+              <div class="search-wrapper">
+                <input 
+                  type="text" 
+                  id="worksSearch" 
+                  placeholder="Search works & publications..."
+                  list="worksSuggestions"
+                >
+                <button id="searchToggle" class="search-btn" title="Search">🔍</button>
+                <datalist id="worksSuggestions"></datalist>
+             </div>
                 <div class="work-item">
                      <h4>My Project Paper</h4>
                      <p class="work-date">2025</p>
